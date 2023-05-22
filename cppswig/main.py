@@ -1,7 +1,5 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import _example
+import example
 
-a = _example.fact(3)
+a = example.fact(3)
 
 print(a)
