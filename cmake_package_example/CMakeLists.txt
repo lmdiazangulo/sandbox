@@ -8,9 +8,9 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND DEFINED ENV{CMAKE_TOOLCHAIN_FILE})
    set(CMAKE_TOOLCHAIN_FILE $ENV{CMAKE_TOOLCHAIN_FILE})
 endif()
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 project(eigentest)
 
@@ -19,12 +19,6 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(Eigen3 CONFIG REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIRS})
 
-find_package(mfem CONFIG REQUIRED)
-include_directories(${MFEM_INCLUDE_DIRS})
-
 add_library(libexample "src/libexample.cpp")
 target_link_libraries(libexample Eigen3::Eigen)
-include(libexample_installation.cmake)
-
-# add_executable(eigentest "src/main.cpp")
-# target_link_libraries(eigentest mfem libexample)
+include(cmake_packaging/libexample_installation.cmake)
