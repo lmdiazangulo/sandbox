@@ -1,10 +1,9 @@
 message(STATUS "Configuring package installation for libexample")
 
 set(libexample_VERSION "0.1")
-install(
-   TARGETS libexample
-   EXPORT libexampleTargets
-)
+
+# Relative to CMAKE_INSTALL_PREFIX:
+set(ConfigPackageLocation "libexample/")
 
 # target_include_directories(libexample PUBLIC ${CMAKE_INSTALL_PREFIX})
 include(CMakePackageConfigHelpers)
@@ -14,12 +13,6 @@ write_basic_package_version_file(
   COMPATIBILITY AnyNewerVersion
 )
 
-# Export the targets (change namespace appropriately):
-export(
-  EXPORT    libexampleTargets
-  FILE      "${CMAKE_CURRENT_BINARY_DIR}/libexampleTargets.cmake"
-)
-
 # Copy the FooConfig.cmake to the build/Foo directory:
 configure_file(
   cmake_packaging/libexampleConfig.cmake
@@ -27,15 +20,23 @@ configure_file(
   COPYONLY
 )
 
-# This is relative to CMAKE_INSTALL_PREFIX:
-# Change the location appropriately:
-set(ConfigPackageLocation "libexample/")
-
+# --- Installation ---
 install(
-  EXPORT      libexampleTargets
-  FILE        libexampleTargets.cmake
-  DESTINATION ${ConfigPackageLocation}/lib/
+   TARGETS libexample
+   EXPORT libexampleTargets
+   DESTINATION ${ConfigPackageLocation}/lib/
 )
+
+# Export the targets (change namespace appropriately):
+export(
+  EXPORT    libexampleTargets
+  FILE      "${CMAKE_CURRENT_BINARY_DIR}/libexampleTargets.cmake"
+)
+
+# install(
+#   EXPORT      libexampleTargets
+#   DESTINATION ${ConfigPackageLocation}/lib/
+# )
 
 # This also installs relative to CMAKE_INSTALL_PREFIX:
 install(
