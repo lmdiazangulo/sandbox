@@ -33,11 +33,6 @@ export(
   FILE      "${CMAKE_CURRENT_BINARY_DIR}/libexampleTargets.cmake"
 )
 
-# install(
-#   EXPORT      libexampleTargets
-#   DESTINATION ${ConfigPackageLocation}/lib/
-# )
-
 # This also installs relative to CMAKE_INSTALL_PREFIX:
 install(
   FILES       cmake_packaging/libexampleConfig.cmake
@@ -48,6 +43,6 @@ install(
 # This is for the source files, change location appropriately:
 install(
   DIRECTORY "src/"
-  DESTINATION ${ConfigPackageLocation}/include/libexample/
+  DESTINATION ${ConfigPackageLocation}/include/
   FILES_MATCHING PATTERN "*.h"
 )
