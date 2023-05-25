@@ -4,4 +4,5 @@ project(sandbox)
 
 #add_subdirectory(cpppybind)
 #add_subdirectory(cppswig)
-add_subdirectory(cmake_package_example)
+# add_subdirectory(cmake_package_example)
+add_subdirectory(cmake_package_usage)

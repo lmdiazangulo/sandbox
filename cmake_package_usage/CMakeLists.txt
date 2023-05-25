@@ -16,9 +16,12 @@ project(eigentest)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(Eigen3 CONFIG REQUIRED)
-include_directories(${EIGEN3_INCLUDE_DIRS})
+find_package(libexample REQUIRED)
+find_package(Eigen3 REQUIRED)
 
-add_library(libexample "src/libexample.cpp")
-target_link_libraries(libexample Eigen3::Eigen)
-include(cmake_packaging/libexample_installation.cmake)
+add_executable(main "main.cpp")
+
+message(STATUS "libexample includes: ${libexample_INCLUDE_DIRS}")
+
+include_directories(${libexample_INCLUDE_DIR})
+target_link_libraries(main libexample Eigen3::Eigen)
