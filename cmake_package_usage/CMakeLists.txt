@@ -20,8 +20,9 @@ find_package(libexample REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 add_executable(main "main.cpp")
-
-message(STATUS "libexample includes: ${libexample_INCLUDE_DIRS}")
+message(STATUS "libexample found: " ${libexample_FOUND})
+message(STATUS "libexample includes: " ${libexample_INCLUDE_DIR})
+message(STATUS "libexample library dir: " ${libexample_LIBRARY_DIR})
 
 include_directories(${libexample_INCLUDE_DIR})
 target_link_libraries(main libexample Eigen3::Eigen)
