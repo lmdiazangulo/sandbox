@@ -2,8 +2,12 @@
 .vscode/
 build/
 */__pycache__/
+
+
 cpppybind/*.ilk
 cpppybind/*.pyd
 cpppybind/*.exp
 cpppybind/*.lib
 cpppybind/*.pdb
+
+py_gmsh/*.FCStd1
